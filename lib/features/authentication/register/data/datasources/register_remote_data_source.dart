@@ -9,9 +9,9 @@ abstract class RegisterRemoteDataSource {
 }
 class RegisterRemoteDataSourceImplements implements RegisterRemoteDataSource{
   final FirebaseAuth auth;
-  final FirebaseFirestore _db;
+  final FirebaseFirestore db;
 
-  RegisterRemoteDataSourceImplements(this.auth, this._db);
+  RegisterRemoteDataSourceImplements({required this.auth,required this.db});
   @override
   Future<UserCredential> registerWithEmailAndPassword(String email, String password)async {
     try {
@@ -25,7 +25,7 @@ class RegisterRemoteDataSourceImplements implements RegisterRemoteDataSource{
   @override
   Future<void> saveUserRecord(UserModel userModel)async {
     try {
-      await _db.collection("users").doc(userModel.id).set(userModel.toJson());
+      await db.collection("users").doc(userModel.id).set(userModel.toJson());
     } on FirebaseAuthException{
       throw "Something went wrong, please try again";
     }

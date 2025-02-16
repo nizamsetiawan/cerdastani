@@ -4,7 +4,6 @@ import 'package:cerdastani/features/authentication/login/domain/usecases/login_w
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get_storage/get_storage.dart';
 
 part 'login_event.dart';
 
@@ -13,12 +12,10 @@ part 'login_state.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final LoginWithEmailUseCase loginWithEmailUseCase;
   final LoginWithGoogleUseCase loginWithGoogleUseCase;
-  final GetStorage localStorage;
 
   LoginBloc({
     required this.loginWithEmailUseCase,
     required this.loginWithGoogleUseCase,
-    required this.localStorage,
   }) : super(LoginStateEmpty()) {
     on<LoginWithEmailAndPasswordEvent>(_onLoginWithEmail);
     on<LoginWithGoogleEvent>(_onLoginWithGoogle);

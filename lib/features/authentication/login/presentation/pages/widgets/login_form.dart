@@ -14,14 +14,12 @@ class _LoginFormState extends State<LoginForm> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  bool _rememberMe = false;
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginStateLoading) {
-          // Tampilkan loading dialog atau snackbar
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.message)),
           );
@@ -30,11 +28,9 @@ class _LoginFormState extends State<LoginForm> {
             SnackBar(content: Text(state.errorMessage)),
           );
         } else if (state is LoginStateSuccess) {
-          // Tampilkan snackbar
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.userCredential.user!.email!)),
           );
-          // Handle navigasi setelah login sukses
           Navigator.pushReplacementNamed(context, "/home");
         }
       },

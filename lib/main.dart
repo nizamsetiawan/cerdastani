@@ -15,14 +15,8 @@ void main() async {
   final WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   ///injection
   await init();
-  //env
-  await dotenv.load(fileName: "assets/env/.env_dev");
-
   ///observer
   Bloc.observer = MyObserver();
-  // ///widgets binding
-  // final WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  //
   /// await splash until other items load
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 

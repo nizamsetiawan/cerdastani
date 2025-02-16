@@ -16,7 +16,7 @@ abstract class LocationRemoteDataSource {
 class LocationRemoteDataSourceImplements implements LocationRemoteDataSource {
   final Dio dio;
 
-  LocationRemoteDataSourceImplements(this.dio);
+  LocationRemoteDataSourceImplements({required this.dio});
 
   @override
   Future<List<ProvinceModel>> getProvinces() async {

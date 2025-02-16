@@ -5,7 +5,7 @@ import '../repository/register.dart';
 
 class SaveUserRegisterUseCase {
   final RegisterRepository registerRepository;
-  SaveUserRegisterUseCase(this.registerRepository);
+  const SaveUserRegisterUseCase({required this.registerRepository});
 
   Future<Either<String, void>> call(UserEntity userEntity) async {
     return await registerRepository.saveUserRecord(userEntity);
